@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/vol/static/css/main.94d9d93e.chunk.css",
+    "main.js": "/vol/static/js/main.cf486594.chunk.js",
+    "main.js.map": "/vol/static/js/main.cf486594.chunk.js.map",
+    "runtime-main.js": "/vol/static/js/runtime-main.f81dabaf.js",
+    "runtime-main.js.map": "/vol/static/js/runtime-main.f81dabaf.js.map",
+    "static/css/2.beefe99c.chunk.css": "/vol/static/css/2.beefe99c.chunk.css",
+    "static/js/2.d9dbba1b.chunk.js": "/vol/static/js/2.d9dbba1b.chunk.js",
+    "static/js/2.d9dbba1b.chunk.js.map": "/vol/static/js/2.d9dbba1b.chunk.js.map",
+    "index.html": "/vol/index.html",
+    "static/css/2.beefe99c.chunk.css.map": "/vol/static/css/2.beefe99c.chunk.css.map",
+    "static/css/main.94d9d93e.chunk.css.map": "/vol/static/css/main.94d9d93e.chunk.css.map",
+    "static/js/2.d9dbba1b.chunk.js.LICENSE.txt": "/vol/static/js/2.d9dbba1b.chunk.js.LICENSE.txt",
+    "static/media/persik.81329c08.png": "/vol/static/media/persik.81329c08.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f81dabaf.js",
+    "static/css/2.beefe99c.chunk.css",
+    "static/js/2.d9dbba1b.chunk.js",
+    "static/css/main.94d9d93e.chunk.css",
+    "static/js/main.cf486594.chunk.js"
+  ]
+}
