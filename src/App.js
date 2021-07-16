@@ -8,7 +8,7 @@ import Home from './panels/Home';
 import Prof from './panels/Prof';
 import Birzh from './panels/Birzh';
 import Cal from './panels/Cal';
-import Home1 from './panels/Home1';
+import Intro from './panels/Intro';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -43,7 +43,7 @@ const App = () => {
 					<Prof id='prof' go={go} />
 					<Birzh id='birzh' go={go} />
 					<Cal id='cal' go={go} />
-					<Home1 id='home1' fetchedUser={fetchedUser} go={go} />
+					<Intro id='persik' fetchedUser={fetchedUser} go={go} />
 
 				</View>
 			</AppRoot>
