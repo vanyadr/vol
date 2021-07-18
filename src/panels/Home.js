@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, PanelHeader, iframe, Header, FetchedUser, Button, Group, Cell, Div, Title, Avatar, withAdaptivity, SizeType, ViewWidth, usePlatform, VKCOM, SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, View, PanelHeaderBack, Placeholder, Gradient, Text, Badge, CardGrid, ContentCard, List, CellButton } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Header, FetchedUser, Button, Group, Cell, Div, Title, Avatar, withAdaptivity, SizeType, ViewWidth, usePlatform, VKCOM, SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, View, PanelHeaderBack, Placeholder, Gradient, Text, Badge, CardGrid, ContentCard, List, CellButton } from '@vkontakte/vkui';
 import Icon28NewsfeedOutline from '@vkontakte/icons/dist/28/newsfeed_outline';
 import Icon28ServicesOutline from '@vkontakte/icons/dist/28/services_outline';
 import Icon28MessageOutline from '@vkontakte/icons/dist/28/message_outline';
@@ -9,12 +9,13 @@ import Icon28ClipOutline from '@vkontakte/icons/dist/28/clip_outline';
 import Icon28UserCircleOutline from '@vkontakte/icons/dist/28/user_circle_outline';
 import Icon56NewsfeedOutline from '@vkontakte/icons/dist/56/newsfeed_outline';
 import { Icon16TearOffFlyerOutline } from '@vkontakte/icons';
-import { Icon12ClockOutline } from '@vkontakte/icons';	
+import { Icon12ClockOutline } from '@vkontakte/icons';
 import { Icon28BillheadOutline } from '@vkontakte/icons';
 import { Icon28GridLayoutOutline } from '@vkontakte/icons';
 import { Icon12Favorite } from '@vkontakte/icons';
 import { Icon24Add } from '@vkontakte/icons';
 import { Icon20AddCircle } from '@vkontakte/icons';
+import { Icon24Newsfeed } from '@vkontakte/icons';
 
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -133,16 +134,17 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 					<Tabbar>
 						<TabbarItem
 							onClick={onStoryChange}
+							selected={activeStory === 'services'}
+							data-story="services"
+							text="Новости"
+						><Icon24Newsfeed /></TabbarItem>
+						<TabbarItem
+							onClick={onStoryChange}
 							selected={activeStory === 'feed'}
 							data-story="feed"
 							text="Биржа"
 						><Icon28GridLayoutOutline /></TabbarItem>
-						{/* <TabbarItem
-				onClick={onStoryChange}
-				selected={activeStory === 'services'}
-				data-story="services"
-				text="Сервисы"
-			  ><Icon28ServicesOutline/></TabbarItem> */}
+
 						<TabbarItem
 							onClick={onStoryChange}
 							selected={activeStory === 'messages'}
@@ -163,32 +165,41 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 						><Icon28UserCircleOutline /></TabbarItem>
 					</Tabbar>
 				}>
-					<View id="feed" activePanel="feed">
-						<Panel id="feed">
-							<PanelHeader>Биржа</PanelHeader>
+					<View id="services" activePanel="services">
+						<Panel id="services">
+							<PanelHeader>Новости</PanelHeader>
 							<Group>
-								<CardGrid size='l'>
-									<CellButton before={<Avatar shadow={true} size={15} ><Icon20AddCircle /></Avatar>} onClick={go} data-to='cal'>Добавить задание на Биржу</CellButton>	
-
+								<CardGrid>
 									<ContentCard
 										subtitle="Раздел: новости о приложении"
 										header="Открытие приложения!"
 										text="Всех приглашаем на открытие нашего нового приложения volunteer!"
 									/>
 									<ContentCard
-										image='https://disk.yandex.ru/i/SwTtUpEK8lLqcw'
+										image='https://t...content-available-to-author-only...r.ru/img/2dpr_img/53095.jpg'
 										subtitle="Раздел: новости о приложении"
 										header="Появление иконки volunteer"
 										text="Представляем вашему вниманию иконку приложения volunteer"
 										maxHeight={500}
 									/>
 									<ContentCard
-										image='https://disk.yandex.ru/i/qKUGFFGwejuSOw'
+										image='https://b...content-available-to-author-only...i.ru/31671-thickbox_default/%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%8B%D0%BB%D0%B5%D1%81%D0%BE%D1%81%D0%B0-samsung-88-%D1%81%D0%B5%D1%80%D0%B8%D0%B8-dj64-01014a.jpg'
 										subtitle="Раздел: новости о приложении"
 										header="Показ дизайн приложения volunteer"
 										text="14 июля команда volunteer показывает первый основной дизайн своего приложения. С нетерпением ждём!"
 										maxHeight={1400}
 									/>
+								</CardGrid>
+							</Group>
+						</Panel>
+					</View>
+					<View id="feed" activePanel="feed">
+						<Panel id="feed">
+							<PanelHeader>Биржа</PanelHeader>
+							<Group>
+								<CardGrid size='l'>
+									<CellButton before={<Avatar shadow={true} size={24} ><Icon20AddCircle /></Avatar>} onClick={go} data-to='cal'>Добавить задание на Биржу</CellButton>
+
 
 									<ContentCard
 										subtitle="Раздел: задания на Бирже"
@@ -219,40 +230,29 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 							</Group>
 						</Panel>
 					</View>
-
-				 {/*<View id="services" activePanel="services">
-					  <Panel id="services">
-						<PanelHeader left={<PanelHeaderBack />}>Сервисы</PanelHeader>
-						<Group style={{ height: '1000px' }}>
-						  <Placeholder icon={<Icon28ServicesOutline width={56} height={56} />}>
-						  </Placeholder>
-						</Group>
-					  </Panel>
-					</View> */}
-
-					<View id="messages" activePanel="messages"> 
+					<View id="messages" activePanel="messages">
 						<Panel id="messages">
 							<PanelHeader>Календарь</PanelHeader>
 							<Group>
-								<CardGrid>
+								<CardGrid size='l'>
 									<ContentCard
 										subtitle="Календарь Июль 2020"
 										header="25 Июля"
-										text="Сбор мусора в Центральном Парке"
+										text="В центральном парке нужно собрать бутылки и пластик после коцерта"
 										caption='Ссылка на задание:"https:/vk.com"'
 										maxHeight={500}
 									/>
 									<ContentCard
 										subtitle="Календарь Июль 2020"
 										header="27 Июля"
-										text="Помощь пожилым людям в доме пристарелых"
+										text="Пожилым людям в доме пристарелых на улице Макарова нужна помощь в ремноте со здании."
 										caption='Ссылка на задание:"https:/vk.com"'
 										maxHeight={500}
 									/>
 									<ContentCard
 										subtitle="Календарь Июль 2020"
 										header="30 Июля"
-										text="Помощь местной рыбной компании очистить водоём от мусора"
+										text="Компания по производству рыбных изделий просит помощи в очистке водоёма от пластика и мусора"
 										caption='Ссылка на задание:"https:/vk.com"'
 										maxHeight={500}
 									/>
@@ -282,13 +282,13 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 										flexDirection: 'column',
 										alignItems: 'center',
 										justifyContent: 'center',
-										textAlign: 'center',
-										padding: -50,
+										textAlign: 'left',
+										padding: 32,
 									}}>
 										{fetchedUser.photo_200 ? <Avatar size={144} src={fetchedUser.photo_200} /> : null}
 										<Title style={{ marginBottom: 8, marginTop: 20 }} level="2" weight="medium">{`${fetchedUser.first_name} ${fetchedUser.last_name}`}</Title>
-										<Text style={{ marginBottom: 8, color: 'var(--text_primary)' }}>Активный участник волонтерских движений, готов помочь в любой момент</Text>
-										<Text style={{ marginBottom: 8, color: 'var(--text_secondary)' }}>{fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}</Text>
+										<Text style={{ marginBottom: 24, color: 'var(--text_secondary)' }}>Волонтёр/Заказчик</Text>
+										<Text style={{ marginBottom: 8, color: 'var(--text_primary)' }}>{fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}</Text>
 										<Text style={{ marginBottom: 24, color: 'var(--text_secondary)' }}></Text>
 									</Gradient>}
 							</Group>
