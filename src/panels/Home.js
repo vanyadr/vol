@@ -20,6 +20,7 @@ import { Icon24Newsfeed } from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import persik from '../img/persik.png';
+import './Persik.css';
 import './Intro.css';
 
 // import React from 'react';
@@ -42,7 +43,7 @@ import './Intro.css';
 // 	</Panel>
 // );
 
-const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props, go }) => {
+const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, fetchedState, sizeX, go, props, route }) => {
 	const platform = usePlatform();
 	const [activeStory, setActiveStory] = React.useState('profile');
 	const onStoryChange = (e) => setActiveStory(e.currentTarget.dataset.story);
@@ -169,27 +170,28 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 						<Panel id="services">
 							<PanelHeader>Новости</PanelHeader>
 							<Group>
-								<CardGrid>
+								<CardGrid size='l'>
 									<ContentCard
 										subtitle="Раздел: новости о приложении"
 										header="Открытие приложения!"
 										text="Всех приглашаем на открытие нашего нового приложения volunteer!"
 									/>
 									<ContentCard
-										image='https://t...content-available-to-author-only...r.ru/img/2dpr_img/53095.jpg'
+										
 										subtitle="Раздел: новости о приложении"
 										header="Появление иконки volunteer"
 										text="Представляем вашему вниманию иконку приложения volunteer"
 										maxHeight={500}
 									/>
 									<ContentCard
-										image='https://b...content-available-to-author-only...i.ru/31671-thickbox_default/%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BF%D1%8B%D0%BB%D0%B5%D1%81%D0%BE%D1%81%D0%B0-samsung-88-%D1%81%D0%B5%D1%80%D0%B8%D0%B8-dj64-01014a.jpg'
+										
 										subtitle="Раздел: новости о приложении"
 										header="Показ дизайн приложения volunteer"
 										text="14 июля команда volunteer показывает первый основной дизайн своего приложения. С нетерпением ждём!"
 										maxHeight={1400}
 									/>
 								</CardGrid>
+								<img className="Persik" src={persik}/>
 							</Group>
 						</Panel>
 					</View>
@@ -205,7 +207,7 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 										subtitle="Раздел: задания на Бирже"
 										header="Сбор мусора в Центральном Парке"
 										text="В центральном парке нужно собрать бутылки и пластик после коцерта"
-										caption='Баллы: 25'
+										caption='Адрес: ул. Макарова 81; Баллы: 25'
 										maxHeight={500}
 									/>
 									<CellButton before={<Icon12Favorite />}>Добавить в Календарь</CellButton>
@@ -227,6 +229,7 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 									/>
 									<CellButton before={<Icon12Favorite />}>Добавить в Календарь</CellButton>
 								</CardGrid>
+								<img className="Persik" src={persik}/>
 							</Group>
 						</Panel>
 					</View>
@@ -239,25 +242,25 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 										subtitle="Календарь Июль 2020"
 										header="25 Июля"
 										text="В центральном парке нужно собрать бутылки и пластик после коцерта"
-										caption='Ссылка на задание:"https:/vk.com"'
+										caption='Заказчик - https:/vk.com/vandrug'
 										maxHeight={500}
 									/>
 									<ContentCard
 										subtitle="Календарь Июль 2020"
 										header="27 Июля"
 										text="Пожилым людям в доме пристарелых на улице Макарова нужна помощь в ремноте со здании."
-										caption='Ссылка на задание:"https:/vk.com"'
+										caption='Заказчик - https:/vk.com/andreykuba'
 										maxHeight={500}
 									/>
 									<ContentCard
 										subtitle="Календарь Июль 2020"
 										header="30 Июля"
 										text="Компания по производству рыбных изделий просит помощи в очистке водоёма от пластика и мусора"
-										caption='Ссылка на задание:"https:/vk.com"'
+										caption='Заказчик - https:/vk.com/alexdit2006'
 										maxHeight={500}
 									/>
 								</CardGrid>
-
+								<img className="Persik" src={persik}/>
 							</Group>
 
 						</Panel>
@@ -283,13 +286,12 @@ const Example = withAdaptivity(({ viewWidth, id, icon, fetchedUser, sizeX, props
 										alignItems: 'center',
 										justifyContent: 'center',
 										textAlign: 'left',
-										padding: 32,
+										padding: 100,
 									}}>
-										{fetchedUser.photo_200 ? <Avatar size={144} src={fetchedUser.photo_200} /> : null}
-										<Title style={{ marginBottom: 8, marginTop: 20 }} level="2" weight="medium">{`${fetchedUser.first_name} ${fetchedUser.last_name}`}</Title>
-										<Text style={{ marginBottom: 24, color: 'var(--text_secondary)' }}>Волонтёр/Заказчик</Text>
-										<Text style={{ marginBottom: 8, color: 'var(--text_primary)' }}>{fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}</Text>
-										<Text style={{ marginBottom: 24, color: 'var(--text_secondary)' }}></Text>
+										{fetchedUser.photo_200 ? <Avatar size={200} src={fetchedUser.photo_200} /> : null}
+										<Title style={{ marginBottom: 8, marginTop: 20 }} level="2" weight="bold">{`${fetchedUser.first_name} ${fetchedUser.last_name}`}</Title>
+										<Text style={{ marginBottom: 8, color: 'var(--text_primary)' }}>Волонтёр/Заказчик</Text>
+										<Text style={{ marginBottom: 8, color: 'var(--text_secondary)' }}>{fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}</Text>
 									</Gradient>}
 							</Group>
 						</Panel>

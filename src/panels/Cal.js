@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import { iframe, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
 
-import persik from '../img/persik.png';
-import './Persik.css';
 
 const Persik2 = props => (
 	<Panel id={props.id}>
